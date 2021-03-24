@@ -18,7 +18,7 @@ import {
   ApiBearerAuth,
   ApiTags,
 } from '@nestjs/swagger';
-import { UserRole, Hello } from '../classes/hello';
+import { UserRole, Hello } from './classes/hello';
 @ApiBearerAuth()
 @ApiTags('hello')
 @Controller('/hello')

@@ -4,10 +4,11 @@ import { AppService } from './app.service';
 import { HelloModule } from './modules/hello/hello.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { ExceptionModule } from './modules/exception/exception.module';
+import { RoleGuardModule } from './modules/role-guard/role-guard.module';
 
 @Module({
   // 依赖注入 --- 好像angular啊
-  imports: [HelloModule, ExceptionModule],
+  imports: [HelloModule, ExceptionModule, RoleGuardModule],
   controllers: [AppController],
   // 提供 服务 和 依赖
   providers: [AppService],

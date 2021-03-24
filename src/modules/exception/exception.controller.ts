@@ -79,7 +79,8 @@ export class ExceptionController {
 
   // 删除
   @Delete()
-  remove(@Query() { id }): string {
+  @ApiQuery({ name: 'id', required: true })
+  remove(@Query('id') id: number): string {
     return this.exceptionService.remove(id);
   }
 }
