@@ -13,6 +13,8 @@ import { ConfigModule, ConfigService } from 'nestjs-config';
 import { StatusMonitorModule } from 'nest-status-monitor';
 import StatusMonitorConfig from './config/statusMonitor';
 import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   // 依赖注入 --- 好像angular啊
@@ -21,6 +23,10 @@ import { AuthModule } from './modules/auth/auth.module';
     ConfigModule.load(resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
     // 传入配置文件
     StatusMonitorModule.setUp(StatusMonitorConfig),
+    TypeOrmModule.forRootAsync({
+      useFactory: (config: ConfigService) => config.get('database'),
+      inject: [ConfigService],
+    }),
     MailerModule.forRootAsync({
       useFactory: () => {
         return {
@@ -47,6 +53,7 @@ import { AuthModule } from './modules/auth/auth.module';
     RoleGuardModule,
     EmailModule,
     AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   // 提供 服务 和 依赖
