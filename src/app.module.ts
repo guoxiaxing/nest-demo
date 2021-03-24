@@ -15,6 +15,8 @@ import StatusMonitorConfig from './config/statusMonitor';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TasksModule } from './tasks/tasks.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   // 依赖注入 --- 好像angular啊
@@ -54,6 +56,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     EmailModule,
     AuthModule,
     UsersModule,
+    // 需要添加这个来实现定时任务的执行，否则只引入 TasksModule 不会执行
+    ScheduleModule.forRoot(),
+    TasksModule,
   ],
   controllers: [AppController],
   // 提供 服务 和 依赖

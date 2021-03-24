@@ -664,6 +664,14 @@
     socket.io "2.4.1"
     tslib "2.1.0"
 
+"@nestjs/schedule@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/schedule/-/schedule-0.4.3.tgz#e780bfc52c2505ec5bbd7261033a7749f0808a20"
+  integrity sha512-EowkpwD09lrdMFzjt/kNQgaq6MG0GrNadNoOEebbfyA0qBU0UTg7J+FVullTR9+5HtaegqqAuWDvZlVoGHYz+Q==
+  dependencies:
+    cron "1.7.2"
+    uuid "8.3.2"
+
 "@nestjs/schematics@^7.1.0", "@nestjs/schematics@^7.2.7":
   version "7.3.0"
   resolved "http://npm.zhenguanyu.com/@nestjs/schematics/download/@nestjs/schematics-7.3.0.tgz#e92d820948f73c77a30e51b06db42e9d2a3699a4"
@@ -2359,6 +2367,13 @@ create-require@^1.1.0:
   version "1.1.1"
   resolved "http://npm.zhenguanyu.com/create-require/download/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
   integrity sha1-wdfo8eX2z8n/ZfnNNS03NIdWwzM=
+
+cron@1.7.2:
+  version "1.7.2"
+  resolved "http://npm.zhenguanyu.com/cron/download/cron-1.7.2.tgz#2ea1f35c138a07edac2ac5af5084ed6fee5723db"
+  integrity sha1-LqHzXBOKB+2sKsWvUITtb+5XI9s=
+  dependencies:
+    moment-timezone "^0.5.x"
 
 cross-spawn@^6.0.0:
   version "6.0.5"
@@ -5121,6 +5136,18 @@ mkdirp@^0.5.1:
   integrity sha1-2Rzv1i0UNsoPQWIOJRKI1CAJne8=
   dependencies:
     minimist "^1.2.5"
+
+moment-timezone@^0.5.x:
+  version "0.5.33"
+  resolved "http://npm.zhenguanyu.com/moment-timezone/download/moment-timezone-0.5.33.tgz#b252fd6bb57f341c9b59a5ab61a8e51a73bbd22c"
+  integrity sha1-slL9a7V/NBybWaWrYajlGnO70iw=
+  dependencies:
+    moment ">= 2.9.0"
+
+"moment@>= 2.9.0":
+  version "2.29.1"
+  resolved "http://npm.zhenguanyu.com/moment/download/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=
 
 ms@2.0.0:
   version "2.0.0"
