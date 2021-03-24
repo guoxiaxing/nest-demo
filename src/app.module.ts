@@ -17,6 +17,7 @@ import { UsersModule } from './modules/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TasksModule } from './tasks/tasks.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { AudioModule } from './modules/jobs/audio/audio.module';
 
 @Module({
   // 依赖注入 --- 好像angular啊
@@ -57,8 +58,9 @@ import { ScheduleModule } from '@nestjs/schedule';
     AuthModule,
     UsersModule,
     // 需要添加这个来实现定时任务的执行，否则只引入 TasksModule 不会执行
-    ScheduleModule.forRoot(),
-    TasksModule,
+    // ScheduleModule.forRoot(),
+    // TasksModule,
+    AudioModule,
   ],
   controllers: [AppController],
   // 提供 服务 和 依赖
