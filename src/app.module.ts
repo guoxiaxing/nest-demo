@@ -12,6 +12,7 @@ import { resolve } from 'path';
 import { ConfigModule, ConfigService } from 'nestjs-config';
 import { StatusMonitorModule } from 'nest-status-monitor';
 import StatusMonitorConfig from './config/statusMonitor';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   // 依赖注入 --- 好像angular啊
@@ -45,6 +46,7 @@ import StatusMonitorConfig from './config/statusMonitor';
     ExceptionModule,
     RoleGuardModule,
     EmailModule,
+    AuthModule,
   ],
   controllers: [AppController],
   // 提供 服务 和 依赖
