@@ -10,8 +10,17 @@ import {
   Delete,
 } from '@nestjs/common';
 import { HelloService } from './hello.service';
-import { ApiQuery, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
+import {
+  ApiQuery,
+  ApiResponse,
+  ApiBody,
+  ApiParam,
+  ApiBearerAuth,
+  ApiTags,
+} from '@nestjs/swagger';
 import { UserRole, Hello } from '../classes/hello';
+@ApiBearerAuth()
+@ApiTags('hello')
 @Controller('/hello')
 export class HelloController {
   constructor(private readonly helloService: HelloService) {}
