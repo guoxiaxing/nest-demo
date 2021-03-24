@@ -8,10 +8,14 @@ import { RoleGuardModule } from './modules/role-guard/role-guard.module';
 import { EmailModule } from './modules/email/email.module';
 import { MailerModule, PugAdapter } from '@nest-modules/mailer';
 import * as path from 'path';
+import { resolve } from 'path';
+import { ConfigModule, ConfigService } from 'nestjs-config';
 
 @Module({
   // 依赖注入 --- 好像angular啊
   imports: [
+    // 声明将哪些文件作为config 然后我们就可以通过注入configService来使用了
+    ConfigModule.load(resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
     MailerModule.forRootAsync({
       useFactory: () => {
         return {
@@ -30,6 +34,8 @@ import * as path from 'path';
           },
         };
       },
+      // useFactory: (config: ConfigService) => config.get('email'),
+      // inject: [ConfigService],
     }),
     HelloModule,
     ExceptionModule,
