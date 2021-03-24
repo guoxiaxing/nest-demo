@@ -10,12 +10,16 @@ import { MailerModule, PugAdapter } from '@nest-modules/mailer';
 import * as path from 'path';
 import { resolve } from 'path';
 import { ConfigModule, ConfigService } from 'nestjs-config';
+import { StatusMonitorModule } from 'nest-status-monitor';
+import StatusMonitorConfig from './config/statusMonitor';
 
 @Module({
   // 依赖注入 --- 好像angular啊
   imports: [
     // 声明将哪些文件作为config 然后我们就可以通过注入configService来使用了
     ConfigModule.load(resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
+    // 传入配置文件
+    StatusMonitorModule.setUp(StatusMonitorConfig),
     MailerModule.forRootAsync({
       useFactory: () => {
         return {
