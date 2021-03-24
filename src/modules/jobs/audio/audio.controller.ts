@@ -1,7 +1,9 @@
 import { InjectQueue } from '@nestjs/bull';
 import { Controller, Post } from '@nestjs/common';
 import { Queue } from 'bull';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('audio')
 @Controller('audio')
 export class AudioController {
   constructor(@InjectQueue('audio') private readonly audioQueue: Queue) {}
