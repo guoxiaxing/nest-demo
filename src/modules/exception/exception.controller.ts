@@ -11,7 +11,7 @@ import {
   UseFilters,
   HttpException,
   HttpStatus,
-  ParseIntPipe,
+  // ParseIntPipe,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -23,6 +23,7 @@ import {
 } from '@nestjs/swagger';
 import { ExceptionService } from './exception.service';
 import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
+import { ParseIntPipe } from '../../common/pipes/parse-int.pipe';
 
 @ApiBearerAuth()
 @ApiTags('exception')
@@ -68,6 +69,8 @@ export class ExceptionController {
   @ApiParam({ name: 'id' })
   @ApiBody({ description: '请输入message' })
   // 有时，我们希望参数的类型为数字，则可以通过管道进行转换
+  // 局部管道
+  // 注意使用的方式是作为@Param装饰器的第二个参数，会将处理后的值赋值给变量id
   // !现nest自带部分管道
   update(@Param('id', new ParseIntPipe()) id, @Body() { message }): string {
     console.log(typeof id);
