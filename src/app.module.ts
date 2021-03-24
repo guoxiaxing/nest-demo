@@ -18,6 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TasksModule } from './tasks/tasks.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AudioModule } from './modules/jobs/audio/audio.module';
+import { AlbumModule } from './modules/album/album.module';
 
 @Module({
   // 依赖注入 --- 好像angular啊
@@ -61,6 +62,7 @@ import { AudioModule } from './modules/jobs/audio/audio.module';
     // ScheduleModule.forRoot(),
     // TasksModule,
     AudioModule,
+    AlbumModule,
   ],
   controllers: [AppController],
   // 提供 服务 和 依赖
