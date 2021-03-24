@@ -36,7 +36,6 @@ export class HelloController {
   @ApiParam({ name: 'id', required: true })
   @ApiBody({ description: '填写body信息' })
   patch(@Param() { id }, @Body() { message }): string {
-    console.log(id, message);
     return this.helloService.update(+id, message);
   }
   //   创建
