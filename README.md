@@ -71,3 +71,42 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## controller
+
+在 Nest 中，controller 就类似于前端的路由，用于处理客户端传入的请求和服务端返回的响应
+
+举个例子，我们如果要通过 http://localhost:3000/user/users 获取所有的用户信息，那么我们可以在 UserController 中创建一个 GET 方法，路径为 users 的路由，这个路由负责返回所有的用户信息。
+
+```
+// user.controller.ts
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('user')
+export class UserController {
+  @Get('users')
+  findAll(): string {
+    return "All User's Info"; // [All User's Info] 暂时代替所有用户的信息
+  }
+  // 或者写成异步的
+  <!-- async findAll(): Promise<any> {
+    return await this.xxx.xxx(); // 一些异步操作
+  } -->
+}
+```
+
+controller 的作用，负责分发和处理请求和响应
+
+## service 服务的提供者
+
+我们的 controller 接收到了一个用户的查询请求，我们不能直接在 controller 中去查询数据库并返回，而是要将查询请求交给 service 来处理，这里我们创建了一个 UserService，就是用来提供数据库操作服务的。也可以用来做用户校验
+
+```
+// user.service.ts
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class UserService {}
+```
+
+[参考文章](https://juejin.cn/post/6885751452015263758)
